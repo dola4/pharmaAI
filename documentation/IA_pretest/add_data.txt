@@ -22,8 +22,12 @@ Pour plusieurs transactions :
 Permet à l'utilisateur de télécharger un fichier CSV et l'ajoute au CSV existant.
 
 
+
+
 Pour que le script `add_data.py` soit pleinement compatible avec le nouveau dataset 
 `outputSQL.csv`, des mises à jour spécifiques sont nécessaires :
+
+
 
 1. **Intégration des Nouvelles Colonnes du Dataset `outputSQL.csv`** :
    - Ajouter des champs d'entrée ou des sélections dans l'interface Streamlit pour recueillir des 

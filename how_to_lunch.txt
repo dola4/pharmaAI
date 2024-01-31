@@ -1,0 +1,11 @@
+Installez les dependences avec la commande
+    'pip install -r requirements.txt'
+
+
+Dans une console Annaconda, Navigez dans le dossier IA_pretest puis exécutez la commande 
+    'streamlit run app.py'
+
+a noter que la fonction add_data ne peux pas fonctionner puisqu'il sgit d'une anicenne version
+qui n'est plus valide. elle requiert une mise a jour. (voir documentation/IA_pretest/add_data.txt)
+
+

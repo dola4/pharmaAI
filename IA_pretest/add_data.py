@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from pandas.tseries.holiday import USFederalHolidayCalendar
 from datetime import datetime, timedelta
-from classes.database.mongoDB import obtenir_info_medicaments, recuperer_medicaments
+from .database.mongoDB import obtenir_info_medicaments, recuperer_medicaments
 
 
 def add_data():

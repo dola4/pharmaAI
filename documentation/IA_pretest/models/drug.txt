@@ -1,0 +1,35 @@
+La classe Drug est conçue pour gérer les informations relatives aux médicaments dans une base de données MongoDB, 
+similaire à la classe Client. Voici un résumé des éléments de cette classe :
+
+Attributs :
+id : L'identifiant unique du médicament, correspondant au champ _id dans MongoDB.
+name : Le nom du médicament.
+stock : La quantité en stock du médicament.
+buy_price : Le prix d'achat du médicament.
+sell_price : Le prix de vente du médicament.
+
+Méthodes :
+from_dict(data_dict) : Méthode statique qui crée une instance de Drug à partir d'un dictionnaire, 
+typiquement utilisée pour transformer un document MongoDB en objet Drug.
+
+to_dict() : Transforme l'instance de Drug en dictionnaire, prêt à être inséré ou mis à jour dans la base de 
+données.
+
+create() : Crée un nouveau médicament dans la base de données si aucun médicament avec le même nom 
+n'existe déjà. Imprime l'identifiant du document inséré ou un message indiquant que le médicament existe déjà.
+
+get_all_drugs() : Méthode statique qui retourne une liste de tous les médicaments présents dans la 
+base de données, chacun transformé en une instance de Drug.
+
+get_drug_by_id(drug_id) : Méthode statique qui cherche un médicament par son identifiant et retourne une 
+instance de Drug correspondante s'il est trouvé.
+
+get_drug_by_name(drug_name) : Méthode statique qui recherche un médicament par son nom et retourne une 
+instance de Drug s'il est trouvé.
+
+update(drug_id) : Met à jour un médicament existant en utilisant l'identifiant fourni. Retourne un 
+booléen indiquant le succès de la mise à jour.
+
+delete(drug_id) : Méthode statique qui supprime un médicament de la base de données en utilisant l'identifiant 
+fourni. Retourne un booléen indiquant si la suppression a été réussie.
+

@@ -1,0 +1,17 @@
+description general des fichier 
+
+mongoDB.py :
+connection local a mongoDB
+
+pharmaai.sql :
+fichier de création de base de données sql.
+
+pharmaai.sql :
+script de données sql.
+
+sql.py :
+connection local a sql
+
+sqlToCsv.py :
+script pour migrer les données sql dans un fichier sql.
+

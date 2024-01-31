@@ -1,0 +1,26 @@
+predictNeed.py est un exemple complet d'un modèle de machine learning pour prédire les besoins en médicaments, 
+en utilisant la bibliothèque PyTorch et d'autres outils de traitement de données en Python. 
+Voici une analyse détaillée de ce script :
+
+1. **Importation des bibliothèques nécessaires** : Le script commence par importer des bibliothèques 
+essentielles comme `pandas`, `numpy`, `torch`, et d'autres modules de `sklearn` pour le prétraitement des 
+données et l'évaluation du modèle.
+
+2. **Fonction `predict_drug_need`** : 
+   - Cette fonction prend en entrée plusieurs `LabelEncoders` (pour la transformation des caractéristiques 
+   catégorielles), un `scaler` (pour la normalisation des caractéristiques), un modèle PyTorch, et 
+   un dictionnaire `features` contenant les caractéristiques d'une vente de médicament.
+   - Les caractéristiques sont transformées et normalisées avant d'être utilisées pour la prédiction 
+   avec le modèle PyTorch. La fonction renvoie la prédiction sous forme de nombre flottant.
+
+3. **Fonction `ml_drug_need`** :
+   - Charge un fichier CSV dans un DataFrame pandas.
+   - Utilise `LabelEncoder` pour transformer les caractéristiques catégorielles en valeurs numériques.
+   - Sélectionne les caractéristiques pertinentes et la cible pour la prédiction (dans ce cas, 'PrescriptionGivenNb').
+   - Normalise les caractéristiques avec `StandardScaler`.
+   - Divise les données en ensembles d'entraînement et de test.
+   - Définit un modèle de réseau de neurones (`Net`) avec PyTorch 
+
+4. **Points à noter** :
+   - Le modèle PyTorch (`Net`) doit être défini et entraîné avant d'utiliser les fonctions `predict_drug_need` 
+   et `ml_drug_need`.

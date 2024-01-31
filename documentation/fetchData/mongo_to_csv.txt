@@ -1,0 +1,33 @@
+
+mongoToCsv.py est un script Python destiné à exporter des données de MongoDB vers un fichier CSV. 
+Le script définit deux fonctions principales : fetch_data() et export_to_csv(data, output_file).
+
+Voici un aperçu de ce que fait chaque partie du script :
+
+Connexion à MongoDB : Le script commence par établir une connexion à MongoDB en 
+important une fonction connection depuis un autre module database.mongoDB. 
+Cette connexion est utilisée pour interroger la base de données.
+
+La fonction fetch_data() :
+
+Utilise un pipeline d'agrégation MongoDB pour récupérer et transformer les données des collections clients, 
+prescriptions, sells, et drugs.
+Les étapes $lookup sont utilisées pour joindre les documents de différentes collections.
+Les étapes $unwind sont utilisées pour décomposer les tableaux de documents en documents multiples.
+$addFields est utilisé pour calculer le profit pour chaque vente.
+$project est utilisé pour définir la structure finale des documents qui seront exportés, y compris les 
+champs comme l'ID du client, l'âge, le sexe, les informations sur les prescriptions, les ventes, et le profit.
+
+La fonction export_to_csv(data, output_file) :
+
+Prend les données récupérées par fetch_data() et un nom de fichier de sortie en tant que paramètres.
+Utilise le module csv de Python pour créer un fichier CSV et y écrire les en-têtes et les lignes de données.
+Mesure et affiche le temps pris pour écrire le fichier CSV.
+Exécution des fonctions :
+
+Les données sont récupérées en appelant fetch_data() et le temps pris pour cette opération est mesuré.
+Les données sont ensuite passées à export_to_csv() pour créer le fichier CSV.
+Le script mesure et affiche le temps total pris pour l'opération complète, du début à la fin.
+
+le fichier csv creer avec ce script devait permettre l'apprentissage de l'application. Le resultat 
+de l'apprentissage n'as pas ete concluant avec le fichier csv.

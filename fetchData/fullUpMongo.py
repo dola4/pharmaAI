@@ -1,8 +1,8 @@
-from ..models.adresse import Adresse
-from ..models.client import Client
-from ..models.drug import Drug
-from ..models.prescription import Prescription
-from ..models.sell import Sell
+from IA_pretest.models.adresse import Adresse
+from IA_pretest.models.client import Client
+from IA_pretest.models.drug import Drug
+from IA_pretest.models.prescription import Prescription
+from IA_pretest.models.sell import Sell
 
 
 from faker import Faker

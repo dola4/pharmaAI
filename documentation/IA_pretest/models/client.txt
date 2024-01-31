@@ -1,0 +1,37 @@
+La classe Client est conçue pour interagir avec la base afin de réaliser des opérations CRUD 
+(Créer, Lire, Mettre à jour, Supprimer) pour les données des clients au sein d'une application. 
+Voici un aperçu de la classe et de ses fonctionnalités :
+
+Attributs :
+id : Identifiant unique du client, correspond au champ _id dans MongoDB.
+first_name : Le prénom du client.
+last_name : Le nom de famille du client.
+age : L'âge du client.
+sexe : Le sexe du client.
+email : L'adresse électronique du client.
+phone : Le numéro de téléphone du client.
+adress_ids : Une liste des identifiants des adresses associées au client.
+prescription_ids : Une liste des identifiants des prescriptions associées au client.
+sell_ids : Une liste des identifiants des ventes associées au client.
+
+Méthodes :
+from_dict(data_dict) : Méthode statique qui crée une instance de Client à partir d'un dictionnaire, 
+utilisée pour la conversion de documents MongoDB en objets Client.
+
+to_dict() : Convertit l'instance de Client en un dictionnaire, adapté pour l'insertion ou la mise à jour des 
+données dans MongoDB.
+
+create() : Crée un nouveau client dans la base de données si aucun client avec le même email 
+n'existe déjà. Imprime un message indiquant si la création a été réussie ou non.
+
+get_all_clients() : Méthode de classe qui retourne une liste de tous les clients dans la base de données sous 
+forme d'instances de Client.
+
+get_client_by_email(email) : Méthode statique qui recherche un client par email et retourne une instance de 
+Client correspondante s'il existe.
+
+update_client(client_id) : Met à jour les informations d'un client existant dans la base de données en 
+utilisant l'identifiant fourni et retourne un booléen indiquant le succès de l'opération.
+
+delete_client(client_id) : Méthode statique qui supprime un client de la base de données en 
+utilisant l'identifiant fourni et retourne un booléen indiquant le succès de l'opération.

@@ -1,0 +1,35 @@
+La classe Prescription Python est conçue pour gérer les informations relatives aux prescriptions médicales. 
+Voici une description détaillée de ses propriétés et méthodes :
+
+### Propriétés :
+- `id` : Identifiant unique de la prescription, correspondant au `_id` dans MongoDB.
+- `client_id` : Identifiant du client associé à la prescription.
+- `given_date` : La date à laquelle la prescription a été délivrée.
+- `expiration_date` : La date d'expiration de la prescription.
+- `drug_name` : Nom du médicament prescrit.
+- `hospital` : Nom de l'hôpital où la prescription a été délivrée.
+- `doctor` : Nom du médecin qui a délivré la prescription.
+- `max_given` : Nombre maximal de fois que la prescription peut être délivrée.
+- `given_nb` : Nombre de fois que la prescription a été délivrée jusqu'à présent.
+
+### Méthodes :
+- `from_dict(data_dict)` : Méthode statique pour créer une instance de `Prescription` à partir d'un dictionnaire, 
+utilisée pour convertir les données de MongoDB en objets Python.
+- `to_dict()` : Convertit l'instance en un dictionnaire, adapté pour l'insertion ou la mise à jour des 
+données dans MongoDB.
+- `create()` : Ajoute une nouvelle prescription dans la base de données. Met également à jour la liste des 
+identifiants de prescriptions (`prescription_ids`) dans le document du client associé.
+- `update_status()` : Met à jour le statut de la prescription (`active` ou `expired`) dans la base de données 
+en fonction de la date d'expiration et du nombre de fois que la prescription a été délivrée.
+- `get_all_prescriptions()` : Méthode statique pour récupérer toutes les prescriptions de la base de données.
+- `get_prescriptions_by_client_id(client_id)` : Méthode statique pour trouver toutes les prescriptions 
+associées à un identifiant de client spécifique.
+- `get_prescription_by_id(prescription_id)` : Méthode statique pour trouver une prescription 
+spécifique par son identifiant.
+- `increment_given_nb(prescription_id)` : Méthode statique pour augmenter le compteur du nombre de 
+fois qu'une prescription a été délivrée (`given_nb`).
+
+### Propriété `status` :
+- Cette propriété calcule dynamiquement le statut de la prescription en vérifiant si la date d'expiration 
+est passée et si le nombre de délivrances est inférieur au maximum autorisé. Si la prescription est toujours 
+valide, elle retourne `active`, sinon `expired`.

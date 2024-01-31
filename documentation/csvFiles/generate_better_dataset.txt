@@ -1,0 +1,53 @@
+Le fichier `generate_dataset.py` est conçu pour générer un ensemble de données fictives, 
+probablement à des fins de test pour des algorithmes d'apprentissage automatique et de prédiction de 
+l'intelligence artificielle. Voici une explication détaillée du processus impliqué dans ce script :
+
+### Importation des Bibliothèques
+Le script commence par importer les modules nécessaires :
+- `pandas` pour la manipulation des données.
+- `random` pour la génération de nombres aléatoires.
+- `datetime` et `timedelta` pour travailler avec des dates et des heures.
+- `USFederalHolidayCalendar` de `pandas.tseries.holiday` pour tenir compte des jours 
+fériés fédéraux américains dans les données.
+
+### Fonction `generate_dataset`
+La fonction principale `generate_dataset(n)` génère un ensemble de données avec `n` enregistrements, où `n` est 
+un paramètre qui spécifie le nombre d'enregistrements à générer.
+
+#### Variables Définies
+- `medicaments` : une liste de noms de médicaments fictifs.
+- `prix_medicaments` : un dictionnaire associant chaque médicament à son prix unitaire.
+- `profit_medicaments` : un dictionnaire associant chaque médicament à son profit unitaire.
+
+#### Génération de Données
+Un calendrier des jours fériés est créé pour une plage de dates donnée. Ensuite, une boucle est 
+utilisée pour générer les données de chaque enregistrement. Pour chaque itération de la boucle :
+- Un médicament est choisi au hasard.
+- La quantité vendue est générée aléatoirement.
+- Le profit total et le ratio de profit sont calculés.
+- Une date de vente est générée aléatoirement.
+- La saison, les indicateurs de week-end et de jour férié sont déterminés en fonction de la date générée.
+- Un ratio prix/quantité est calculé.
+
+#### Création d'une DataFrame et Exportation
+Toutes ces informations sont stockées dans un dictionnaire, qui est ensuite ajouté à une liste de données. 
+Une fois la boucle terminée, une DataFrame `pandas` est créée à partir de la liste de données. La DataFrame 
+est triée par date et une moyenne roulante sur 7 jours pour la quantité est calculée. Enfin, la DataFrame est 
+exportée vers un fichier CSV `donnees_pharmacie_profit.csv`.
+
+un autre fichier immitant celui-ci a été utilisée pour générer les fichiers donnees_pharmacie_enrichie.csv. 
+Malheureusement ils ont été écrasé
+
+### Exécution du Script
+À la fin du script, la fonction `generate_dataset` est appelée avec un argument `5000`, 
+ce qui signifie que l'ensemble de données généré contiendra 5000 enregistrements.
+
+### Utilisation Pratique
+Ce script est utile pour créer un ensemble de données fictif pour tester des modèles de prédiction 
+concernant les ventes de médicaments, les profits réalisés, et d'autres analyses liées aux opérations d'une 
+pharmacie. Il permet aux développeurs et aux data scientists de tester des modèles sans avoir besoin de données 
+réelles, ce qui peut être particulièrement utile dans les premières phases de développement ou lorsque 
+l'accès à de vraies données est restreint ou indisponible.
+
+Le dossier cvsFiles est rendu desuet puisque j'ai creer les base de données avec d'autre données pour ensuite 
+les migreer dans un fichier csv.

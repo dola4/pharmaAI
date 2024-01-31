@@ -1,0 +1,19 @@
+Le script Python dans sqlToCsv.py interagit avec une base de données SQL pour extraire des informations de ventes 
+et de prescriptions, et ajoute des caractéristiques supplémentaires telles que le jour de la semaine, 
+le jour du mois, le mois, l'année, et si la date de vente ou de prescription tombe pendant un week-end 
+ou un jour férié. Il détermine également la saison en fonction du mois de la transaction.
+
+Le script commence par établir une connexion à la base de données SQL en utilisant une fonction get_cursor 
+du fichier sql.py. Ensuite, il définit une fonction determine_season pour attribuer une saison en fonction du mois.
+
+La requête SQL sélectionne plusieurs colonnes de différentes tables liées aux ventes, aux prescriptions, 
+aux clients et aux médicaments, pour analyser les ventes de médicaments.
+
+Après avoir exécuté la requête et obtenu les données, le script utilise Pandas pour transformer les dates en 
+informations exploitables, comme le jour de la semaine, et vérifie si ces dates coïncident avec des week-ends 
+ou des jours fériés. Cela est accompli en utilisant le calendrier des jours fériés fédéraux des États-Unis.
+
+Le script calcule ensuite le profit pour chaque vente en soustrayant le prix d'achat du prix de vente et arrondit 
+le résultat à deux décimales. Enfin, il sauvegarde le DataFrame Pandas enrichi dans un fichier CSV nommé 
+'outputSQL.csv'. Ce fichier CSV sera utilisé pour des analyses, l'apprentissage et la prédiction de l'intelligence 
+artificielle.

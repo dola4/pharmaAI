@@ -1,0 +1,48 @@
+La migration des données s'est avérée être une tâche complexe qui implique plusieurs étapes. 
+Voici un aperçu détaillé de chaque étape :
+
+1. **Initialisation** : 
+    - Importation des modules nécessaires.
+    - Obtention du curseur et de la connexion à la base de données SQL à l'aide de `get_cursor()`.
+    - Initialisation des dictionnaires pour mapper les identifiants des clients et des prescriptions entre MongoDB et SQL.
+
+2. **Fonction `migrate_all`** : 
+    - **Migration des médicaments (`drugs`)** : Récupère tous les médicaments de MongoDB, 
+    les insère dans la table SQL `drugs` et comptabilise chaque insertion.
+    - **Migration des clients et adresses (`clients` et `adresses`)** : Récupère tous les clients, 
+    les insère dans la table `clients`, mappe leur ID MongoDB vers SQL, puis fait 
+    de même pour les adresses associées.
+    - **Migration des prescriptions (`prescriptions`)** : Récupère toutes les prescriptions, 
+    convertit les dates au format SQL, récupère l'ID SQL du médicament concerné, puis insère les données 
+    dans la table `prescriptions`.
+    - **Migration des ventes (`sells`)** : Récupère toutes les ventes, trouve l'ID SQL correspondant au 
+    client, insère la vente dans la table `sells`, puis associe chaque vente aux prescriptions 
+    correspondantes dans la table `sell_prescriptions`.
+
+3. **Fonction `migrate_sells`** : 
+    - Similaire à la section des ventes dans `migrate_all`, mais isolée pour une exécution séparée si nécessaire.
+
+4. **Fonction `fill_up_sell_prescriptions`** : 
+    - Parcourt toutes les ventes et remplit la table `sell_prescriptions` avec les associations 
+    entre les ventes et les prescriptions.
+
+5. **Gestion des erreurs et fermeture de la connexion** : 
+    - Chaque bloc de migration est entouré d'un bloc try-except pour gérer les exceptions. En cas d'erreur, 
+    la transaction est annulée (rollback).
+    - Après chaque section de migration, les modifications sont validées (commit) sur la base de données.
+    - À la fin de chaque fonction, la connexion à la base de données est fermée pour libérer les ressources.
+
+6. **Logique générale** : 
+    - La migration est divisée en sections logiques, chacune traitant d'une table spécifique de la base de données.
+    - Les données sont extraites de MongoDB, transformées si nécessaire (comme le formatage des dates), 
+    et insérées dans la base de données SQL.
+    - Des compteurs sont utilisés pour suivre le nombre d'enregistrements insérés dans chaque table.
+
+7. **Points clés** :
+    - Les mappings d'identifiants sont cruciaux pour lier les données entre MongoDB et SQL, 
+    en particulier pour les relations entre les tables.
+    - La gestion des exceptions assure la stabilité du processus de migration et aide à identifier 
+    les problèmes potentiels.
+    - L'utilisation de transactions garantit que la base de données reste cohérente 
+    même en cas d'erreur.
+

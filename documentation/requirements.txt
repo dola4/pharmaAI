@@ -1,0 +1,12 @@
+pandas
+numpy
+matplotlib
+seaborn
+streamlit
+plotly
+scikit-learn
+torch
+Faker
+python-dateutil
+pymongo
+mysql-connector-python

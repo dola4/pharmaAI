@@ -1,0 +1,40 @@
+predictProfit.py` est conçu pour prédire les profits réalisés sur des ventes de médicaments 
+utilisant des données historiques. Voici une description détaillée des différentes parties du script :
+
+1. **Importation des bibliothèques nécessaires** :
+   - Utilisation de pandas, numpy, streamlit pour la manipulation de données et la création d'applications web.
+   - Utilisation de PyTorch pour la construction et l'entraînement du modèle de réseau de neurones.
+   - Utilisation de scikit-learn pour le prétraitement des données et l'évaluation du modèle.
+
+2. **Fonction `predict_profit`** :
+   - Prend en entrée un modèle, un objet de mise à l'échelle, plusieurs encodeurs de label 
+   (`LabelEncoder`) pour différentes caractéristiques catégorielles, et un dictionnaire de caractéristiques.
+   - Transforme les caractéristiques catégorielles en valeurs numériques à l'aide des `LabelEncoder`.
+   - Met à l'échelle les caractéristiques numériques.
+   - Utilise le modèle pour prédire le profit à partir des caractéristiques transformées.
+
+3. **Fonction `ml_profit`** :
+   - Charge les données depuis un fichier CSV.
+   - Initialise les `LabelEncoder` pour les caractéristiques catégorielles.
+   - Transforme les colonnes catégorielles en numériques.
+   - Sélectionne les caractéristiques et la cible (Profit).
+   - Normalise les caractéristiques à l'aide de `StandardScaler`.
+   - Divise les données en ensembles d'entraînement et de test.
+   - Définit un modèle de réseau de neurones (classe `Net`) avec trois couches 
+   linéaires et des fonctions d'activation ReLU.
+   - Initialise le modèle, la fonction de perte (MSE), et l'optimiseur (Adam).
+   - Effectue l'entraînement du modèle sur les données d'entraînement.
+   - Évalue le modèle sur l'ensemble de test et calcule le MSE et le score R2.
+   - Retourne le modèle entraîné, l'objet de mise à l'échelle, les encodeurs, ainsi que les 
+   métriques de performance.
+
+4. **Architecture du modèle `Net`** :
+   - Le modèle est un réseau de neurones simple avec trois couches entièrement connectées.
+   - La première couche a une taille d'entrée égale au nombre de caractéristiques et 64 neurones.
+   - La deuxième couche a 64 entrées et 32 neurones.
+   - La troisième couche est la couche de sortie avec 1 neurone, adaptée à une tâche de régression.
+
+5. **Entraînement et évaluation du modèle** :
+   - Utilise un DataLoader pour itérer sur les données d'entraînement par lots.
+   - Applique un processus d'optimisation standard avec backpropagation.
+   - Évalue la performance du modèle sur l'ensemble de test pour obtenir le MSE et le score R2.

@@ -1,0 +1,47 @@
+# Information Générale sur l'Application de Gestion de Pharmacie
+
+## Introduction
+
+Cette application est conçue pour gérer efficacement les opérations d'une pharmacie. Elle intègre diverses 
+fonctionnalités allant de l'analyse exploratoire des données (EDA) à la prédiction des besoins en 
+médicaments et des profits. L'application utilise des modèles de machine learning pour fournir des 
+prévisions précises et aider à la prise de décisions stratégiques.
+
+## Technologies Utilisées
+
+- **Langages de Programmation** : Python
+
+- **Librairies et Frameworks** :
+  - Pandas et NumPy pour la manipulation des données.
+  - Streamlit pour la création d'une interface utilisateur web interactive.
+  - PyTorch pour les modèles de réseau de neurones.
+  - Scikit-learn pour le prétraitement des données et l'évaluation des modèles.
+  - Matplotlib et Seaborn pour la visualisation des données.
+
+- **Base de Données** : 
+Utilisation de MongoDB et migration vers SQL pour une meilleure gestion des données.
+
+## Architecture et Fonctionnalités
+
+### Architecture
+L'application adopte une architecture modulaire, facilitant ainsi la maintenance et les mises à jour. 
+Elle se compose de plusieurs scripts Python, chacun ayant une responsabilité spécifique :
+
+1. **Scripts de Modélisation (`predictNeed.py`, `predictProfit.py`)** :
+   - Modèles de machine learning pour prédire les besoins en médicaments et les profits.
+2. **Script d'Analyse Exploratoire (`eda.py`)** :
+   - Fonctionnalités pour analyser et visualiser les données.
+3. **Scripts de Migration de Données (`migrate to sql`)** :
+   - Outils pour transférer les données de MongoDB vers une base de données SQL.
+
+### Fonctionnalités Clés
+1. **Ajout et Gestion des Données** :
+   - Importation et ajout de nouvelles transactions.
+   - Gestion des informations sur les médicaments, les clients, et les ventes.
+2. **Analyse Exploratoire des Données (EDA)** :
+   - Analyse des tendances, des corrélations, et d'autres aspects importants des données.
+3. **Prédiction des Besoins et des Profits** :
+   - Utilisation de modèles de régression pour prédire les quantités de médicaments nécessaires et les profits potentiels.
+4. **Visualisations** :
+   - Graphiques et visualisations pour une meilleure compréhension des données.
+

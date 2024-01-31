@@ -1,0 +1,48 @@
+Le fichier `adresse.py` contient la définition d'une classe Python nommée `Adresse`, qui est utilisée pour la 
+gestion des adresses.
+
+### Classe `Adresse`
+Cette classe représente une adresse et est composée des propriétés suivantes :
+- `id` : l'identifiant unique de l'adresse dans la base de données.
+- `door` : le numéro de porte ou de bâtiment.
+- `street` : le nom de la rue.
+- `city` : la ville.
+- `postal_code` : le code postal.
+- `state` : l'état ou la région.
+- `country` : le pays.
+- `client_ids` : une liste des identifiants des clients associés à cette adresse.
+
+### Constructeur
+Le constructeur `__init__` initialise une instance de la classe `Adresse` avec les propriétés mentionnées ci-dessus.
+
+### Méthodes de Classe
+- `from_dict(data_dict)`: Une méthode statique qui crée une instance de `Adresse` à partir d'un dictionnaire, 
+ce qui est utile pour la désérialisation des données provenant de MongoDB.
+
+- `to_dict()`: Convertit l'instance d'`Adresse` en dictionnaire pour la sérialisation, utilisé lors de l'insertion 
+ou de la mise à jour des données dans MongoDB.
+
+- `create(client_id)`: Ajoute une nouvelle adresse à la base de données ou met à jour les `client_ids` si 
+l'adresse existe déjà. Elle lie également l'adresse au client en mettant à jour `adress_ids` dans le document du 
+client.
+
+- `get_all_adresses()`: Une méthode statique pour récupérer toutes les adresses de la base de données et les 
+retourner sous forme d'instances de la classe `Adresse`.
+
+- `get_adress_by_client_id(client_id)`: Une méthode statique qui retourne les adresses associées à un `client_id` 
+spécifique.
+
+- `update(adress_id)`: Met à jour les détails d'une adresse existante dans la base de données en utilisant 
+l'identifiant de l'adresse.
+
+- `delete(adress_id)`: Supprime une adresse de la base de données et met à jour les documents des clients 
+associés pour refléter cette suppression.
+
+### Gestion des Erreurs
+Toutes les méthodes d'interaction avec la base de données enveloppent les opérations dans des blocs 
+`try`/`except` pour gérer les exceptions et imprimer les erreurs si elles se produisent.
+
+### Connexion à MongoDB
+Au début du fichier, il y a une connexion à MongoDB établie en utilisant `connection()` importée de 
+`database.mongoDB`. Cette connexion est utilisée dans toutes les méthodes qui interagissent avec la base de données.
+

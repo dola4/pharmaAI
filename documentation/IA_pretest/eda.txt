@@ -1,0 +1,41 @@
+eda.py est  conçu pour effectuer une analyse exploratoire des données (EDA) et 
+visualiser ces données dans une application Streamlit. 
+Voici une description détaillée de ses fonctionnalités et composants :
+
+### Importations de Bibliothèques :
+- Importe des bibliothèques essentielles pour la manipulation de données et la visualisation, 
+notamment Pandas, NumPy, Matplotlib, Seaborn, Streamlit, et Plotly.
+- Importe `OneHotEncoder` de Scikit-learn pour le traitement des caractéristiques catégorielles.
+
+### Fonction `get_high_correlations` :
+- Calcule et retourne les paires de caractéristiques qui ont une corrélation élevée dans le DataFrame fourni.
+- Utilise un seuil (par défaut de 0.8) pour déterminer quels coefficients de corrélation sont considérés 
+comme "élevés".
+
+### Fonction `encode_categorical_columns` :
+- Encode les colonnes catégorielles du DataFrame en utilisant l'encodage one-hot.
+- Retourne un DataFrame avec les colonnes catégorielles encodées.
+
+### Fonction Principale `eda` :
+- Cette fonction est la principale interface pour l'analyse exploratoire des données dans Streamlit.
+- Affiche des options pour visualiser différentes analyses et statistiques du DataFrame fourni.
+- Les options incluent :
+  - Affichage des données brutes.
+  - Affichage des valeurs manquantes dans les données.
+  - Affichage des types de données.
+  - Affichage des statistiques descriptives.
+  - Affichage de la matrice de corrélation, y compris pour les attributs catégoriels.
+  - Affichage d'histogrammes pour chaque attribut.
+  - Affichage de graphiques de densité pour chaque attribut numérique.
+  - Option pour afficher un diagramme de dispersion entre deux caractéristiques sélectionnées.
+
+### Visualisation des Données :
+- Utilise Matplotlib et Seaborn pour créer des histogrammes et des cartes thermiques (heatmap).
+- Utilise Plotly Express pour créer des graphiques de dispersion interactifs.
+
+### Intégration avec Streamlit :
+- Utilise des widgets Streamlit tels que `st.checkbox` et `st.selectbox` pour 
+permettre à l'utilisateur de choisir les analyses et visualisations à afficher.
+- Utilise `st.write` et `st.pyplot` pour afficher les résultats et les 
+graphiques dans l'application Streamlit.
+

@@ -1,0 +1,49 @@
+Votre fichier `add_data.py` est un script Streamlit pour un tableau de bord analytique et prédictif dans 
+le domaine pharmaceutique. Voici une description détaillée de ses composants et des suggestions pour éviter 
+la redondance :
+
+### Description du Fichier `add_data.py` :
+1. **Importations et Configuration Initiale** :
+   - Importe des bibliothèques nécessaires telles que Pandas, NumPy, Streamlit, et Plotly, ainsi que 
+   des fonctions de traitement des dates et des jours fériés.
+   - Charge le dataset `outputSQL.csv` dans un DataFrame Pandas.
+
+2. **Configuration de Streamlit et Interface Utilisateur** :
+   - Définit les options de configuration pour la page Streamlit.
+   - Crée une barre latérale pour naviguer entre différentes fonctions telles que l'ajout de données(add_data.py), 
+   l'analyse exploratoire des données (eda.py) et la prédiction (predictNeed.py, predictProfit.py).
+
+3. **Ajout de Données** :
+   - Cette section est prévue pour l'ajout de données mais est actuellement passée.
+
+4. **Analyse Exploratoire des Données (EDA)** :
+   - Appelle la fonction `eda` pour l'analyse exploratoire des données avec le DataFrame chargé.
+
+5. **Prédictions** :
+   - Offre deux options de prédiction : prédiction de profit et prédiction de besoin en médicaments.
+   - Pour la prédiction de profit, il utilise un modèle pré-entrainé pour prédire le profit sur une date sélectionnée.
+   - Pour la prédiction de besoin en médicaments, il prédit la quantité nécessaire pour chaque médicament sur une date sélectionnée.
+
+
+
+### Suggestions pour Éviter la Redondance :
+
+
+1. **Optimisation des Importations** :
+   - Vérifiez et supprimez les importations inutilisées pour simplifier le script.
+
+2. **Factorisation des Fonctions de Prédiction** :
+   - Les fonctions de prédiction pour le profit et le besoin en médicaments sont similaires. 
+   je devrais donc créer une fonction générique de prédiction et la personnaliser avec des paramètres spécifiques 
+   pour chaque type de prédiction.
+
+3. **Réutilisation du Code** :
+   - Les calculs pour déterminer le jour de la semaine, le mois, la saison, les jours fériés, etc., sont répétés. 
+   je devrais créer des fonctions génériques pour ces calculs et les appeler au besoin.
+
+4. **Nettoyage des DataFrames** :
+   - Si des colonnes de `dfSQL` ne sont pas utilisées, je devrais les retirer du DataFrame pour 
+   alléger la charge de calcul.
+
+
+

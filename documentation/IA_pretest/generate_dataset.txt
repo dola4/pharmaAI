@@ -1,0 +1,40 @@
+
+Le script `generate_fake_data.py` a pour but de générer un ensemble de données fictives pour simuler 
+les transactions d'une pharmacie. 
+
+ Fonctionnalités
+
+ Génération de Données
+- Le script génère des données pour une liste prédéfinie de médicaments, avec des prix d'achat et de vente 
+spécifiques à chaque médicament.
+- Pour chaque transaction, plusieurs attributs sont générés de manière aléatoire, 
+tels que l'identifiant de la vente (`id_vente`), l'identifiant du client (`id_client`), le sexe du client, 
+son âge, et la date de la vente (`SellDate`).
+- Les dates de délivrance et d'expiration des prescriptions sont également générées, accompagnées du nombre 
+de prescriptions délivrées et du maximum autorisé.
+- Des informations saisonnières et des vérifications des jours fériés sont incorporées en se basant sur 
+la date de la vente et les dates associées aux prescriptions.
+
+ Colonnes du Dataset
+- Le script définit une structure de données comprenant 35 attributs pour chaque transaction, 
+incluant des détails sur les prescriptions, les dates importantes, et les calculs de profit pour chaque vente de médicament.
+
+ Calculs Spécifiques
+- Pour chaque transaction, le script calcule si la date de vente ou les dates liées aux prescriptions 
+tombent un jour férié (`SellDateIsHoliday`, `PrescriptiongivenDateIsHoliday`, 
+`PrescriptionExpirationDateIsHoliday`) ou un week-end, et détermine la saison correspondante.
+- Le profit pour chaque transaction est calculé comme la différence entre le prix de vente et le prix d'achat 
+du médicament.
+
+ Méthodes Utilisées
+
+- `generate_fake_data(num_rows=10)`: La fonction principale qui orchestre la génération des données. 
+Elle accepte un paramètre `num_rows` qui détermine le nombre de lignes de données à générer.
+- `determine_season(month)`: Une fonction utilitaire pour déterminer la saison basée sur le mois de la transaction.
+- `is_holiday(date, holidays)`: Vérifie si une date donnée est un jour férié en utilisant une liste pré-calculée de jours fériés.
+
+ Exécution et Sortie
+
+- Le script génère les données fictives et les enregistre dans un fichier CSV (`generate_output.csv`), prêt à être utilisé pour l'analyse ou la simulation d'opérations de pharmacie.
+- L'exécution de ce script est particulièrement utile pour tester des modèles de prévision, effectuer des analyses exploratoires des données, ou simuler des scénarios opérationnels sans utiliser de données réelles de patients ou de transactions.
+

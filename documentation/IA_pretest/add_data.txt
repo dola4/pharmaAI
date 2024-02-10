@@ -1,67 +1,53 @@
-add_data.py est un script conçu pour ajouter des données de transaction liées à la pharmacie dans un fichier 
-CSV existant, avec une interface utilisateur développée en utilisant Streamlit. 
-Voici une description détaillée du script et des mises à jour à effectuer pour qu'il soit compatible avec 
-le nouveau dataset outputSQL.csv :
 
-Description de add_data.py :
-Importations et Configuration Initiale :
+Objectif
+Le script `add_data.py` est conçu pour ajouter des données de transactions. Il permet aux 
+utilisateurs d'ajouter individuellement ou en masse des transactions de vente de 
+médicaments, en se connectant à une base de données MySQL pour récupérer les informations nécessaires.
 
-Importe Streamlit, Pandas, et d'autres modules nécessaires.
-Établit une connexion avec la base de données pour obtenir des informations sur les médicaments.
+Fonctionnalités Clés
 
-Fonction add_data :
+ Connexion à la Base de Données
+- Le script établit une connexion à une base de données MySQL nommée `pharmaai` pour accéder aux données 
+existantes sur les médicaments (`drugs`), les clients (`clients`), les prescriptions (`prescriptions`), 
+et les ventes (`sells`).
+- Des fonctions spécifiques (`get_all_drugs`, `get_all_clients`, `get_all_prescriptions`, 
+`get_all_sells`) récupèrent les informations pertinentes de chaque table pour les utiliser 
+dans l'interface utilisateur.
 
-Permet à l'utilisateur de choisir entre ajouter une transaction unique ou plusieurs transactions via un fichier CSV.
+ Ajout de Transactions
+- L'utilisateur peut choisir entre deux options principales : ajouter une transaction unique ou 
+ajouter plusieurs transactions à partir d'un fichier CSV.
+- Pour une transaction unique, l'utilisateur peut rechercher un client par email, sélectionner un 
+médicament dans une liste déroulante, et saisir des détails supplémentaires comme la date de vente, 
+le nombre de prescriptions délivrées, etc.
+- Les transactions multiples peuvent être ajoutées en téléchargeant un fichier CSV contenant 
+les données de transactions, qui seront ensuite fusionnées avec les données existantes.
 
-Pour une transaction unique :
-Utilise Streamlit pour recueillir des détails sur la transaction, tels que la date, le médicament, 
-la quantité, etc.
-Calcule le prix total et d'autres attributs tels que si la date est un week-end ou un jour férié.
-Ajoute une nouvelle ligne au CSV existant (donnees_pharmacie_enrichies.csv).
-Pour plusieurs transactions :
-Permet à l'utilisateur de télécharger un fichier CSV et l'ajoute au CSV existant.
+ Génération Dynamique de Données
+- Le script calcule dynamiquement plusieurs attributs des transactions, tels que le jour de la semaine, 
+si la date est un week-end ou un jour férié, et la saison basée sur la date de vente.
+- Le profit pour chaque transaction est calculé comme la différence entre le prix de vente et le prix 
+d'achat du médicament sélectionné.
 
+ Interaction avec l'Utilisateur via Streamlit
+- Streamlit est utilisé pour créer une interface utilisateur interactive où les utilisateurs peuvent facilement 
+sélectionner les options, entrer des données, et soumettre des transactions.
+- Des validations et des messages de feedback sont fournis pour guider l'utilisateur dans le processus 
+d'ajout de données.
 
+ Méthodes et Procédures
 
+- `get_cursor()` : Établit la connexion à la base de données MySQL et retourne le curseur et la connexion.
+- `get_all_drugs()`, `get_all_clients()`, `get_all_prescriptions()`, `get_all_sells()` : 
+Récupèrent les informations existantes dans la base de données pour leur utilisation dans l'interface utilisateur.
+- `add_data()` : Fonction principale qui implémente la logique d'ajout de transactions à l'aide d'interfaces 
+utilisateur Streamlit.
 
-Pour que le script `add_data.py` soit pleinement compatible avec le nouveau dataset 
-`outputSQL.csv`, des mises à jour spécifiques sont nécessaires :
+ Utilisation et Exécution
 
-
-
-1. **Intégration des Nouvelles Colonnes du Dataset `outputSQL.csv`** :
-   - Ajouter des champs d'entrée ou des sélections dans l'interface Streamlit pour recueillir des 
-   informations telles que `id_vente`, `id_client`, `PrescriptionGivenDate`, `PrescriptionExpirationDate`, 
-   `PrescriptionStatus`, `PrescriptionGivenNb`, et `PrescriptionMaxGiven`.
-   - Lors de l'ajout d'une transaction, ces informations doivent être collectées et ajoutées à la nouvelle ligne 
-   insérée dans le CSV.
-
-2. **Gestion des Informations de Prescription** :
-   - Fournir des options pour sélectionner ou saisir les dates de délivrance et d'expiration des prescriptions.
-   - Assurer la cohérence des formats de date avec ceux du dataset `outputSQL.csv` (typiquement `%Y-%m-%d`).
-
-3. **Calcul du Profit** :
-   - Calculer le profit pour chaque transaction en soustrayant `BuyPrice` de `SellPrice`.
-   - Ajouter une colonne `Profit` dans le CSV pour chaque nouvelle transaction ajoutée.
-
-4. **Mise à Jour de l'Interface Utilisateur Streamlit** :
-   - Modifier l'interface utilisateur pour inclure des champs pour les nouvelles données requises par 
-   `outputSQL.csv`.
-   - Assurer une validation des entrées pour correspondre aux types de données du dataset 
-   (par exemple, validation des dates, des nombres, etc.).
-
-5. **Validation des Données** :
-   - Vérifier que les données entrées manuellement ou importées correspondent aux types de données et aux formats 
-   attendus dans `outputSQL.csv`.
-   - Implémenter des contrôles pour prévenir les erreurs de saisie, comme les dates mal formatées ou les 
-   valeurs numériques incorrectes.
-
-6. **Mise à Jour des Chemins de Fichiers** :
-   - Si le nom du fichier CSV existant (`donnees_pharmacie_enrichies.csv`) ou le chemin d'accès a été modifié, 
-   mettre à jour ces références dans le script pour qu'il pointe vers le bon fichier.
-
-7. **Gestion des Colonnes Supplémentaires** :
-   - Pour des colonnes comme `SellDayOfWeek`, `SellDayOfMonth`, `SellMonth`, `SellYear`, `SellDateIsWeekend`, 
-   `SellDateIsHoliday`, `SellDateSeason` et d'autres, ces valeurs doivent être calculées automatiquement 
-   basé sur la date de la transaction.
+- Le script est exécuté via Streamlit, offrant une interface web pour interagir avec 
+les fonctionnalités d'ajout de données.
+- Les utilisateurs peuvent choisir entre ajouter une transaction à la fois ou en masse via un fichier CSV.
+- Après l'ajout de transactions, les modifications sont sauvegardées dans un 
+fichier CSV existant, `outputSQL.csv`, qui sert de source de données persistante pour l'application.
 

@@ -9,7 +9,7 @@ from pandas.tseries.holiday import USFederalHolidayCalendar
 import calendar
 import time 
 
-
+from add_data import add_data
 from eda import eda
 from predictProfit import ml_profit, predict_profit
 from predictNeed import predict_drug_need, ml_drug_need
@@ -78,8 +78,7 @@ option = [
 selected_option = st.sidebar.selectbox("Choisir une option", option)
 
 if selected_option == "Ajout de données":
-    pass
-    #add_data()
+    add_data()
 
 elif selected_option == "Analyse exploratoire des données (EDA)":
     eda(dfSQL, feature_names, target)

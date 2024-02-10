@@ -1,0 +1,8 @@
+tache accomplie cette semaine :
+
+mise a jour du fichier 'IA_pretest/add_data.py' pour qu'il soit conforme a la structure de 'outputSQL.csv' 
+et pour qu'il fonctionne sans bogue.
+
+implémentation du fichier 'IA_pretest/generate_dataset.py' pour tester la fonctionnalité 
+'Ajouter plusieurs transactions' au fichier add_data.py(voir documentation/generate_dataset.txt)
+

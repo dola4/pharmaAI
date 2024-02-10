@@ -38,7 +38,7 @@ des données. Les fonctions `create_drugs()` et `create_clients(4)` sont comment
 qu'elles étaient utilisées précédemment pour générer des médicaments et des clients.
 
 ### Utilisation Pratique
-Ce script est utilisé pour remplir une base de données MongoDB avec des données fictives, 
+Ce script est utilisé pour remplir la base de données MongoDB avec des données fictives, 
 qui peuvent ensuite être utilisées pour tester le comportement de l'application, comme les requêtes de base de 
 données, la logique métier, ou les interfaces utilisateur sans avoir besoin de données réelles. 
 Cela permet aux développeurs et aux testeurs de travailler avec un ensemble de données représentatif 

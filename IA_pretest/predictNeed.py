@@ -48,7 +48,7 @@ def predict_drug_need(model, scaler, le_sexe, le_status, le_drugName, le_sellDay
         le_prescriptionExpirationDateIsHoliday.transform([features['PrescriptionExpirationDateIsHoliday']])[0],
         le_prescriptionExpirationDateSeason.transform([features['PrescriptionExpirationSeason']])[0],
 
-        features['Profit'],
+        #features['Profit'],
     ])
 
     # Reshape transformed_features en un tableau 2D

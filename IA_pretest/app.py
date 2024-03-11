@@ -92,7 +92,7 @@ elif selected_option == "Prediction pour une journee":
     if prediction_option == "Prédiction de profit":
 
         start_time = time.time()
-        profit_model, profit_scaler, le_sexe, le_status, le_drugName, le_sellDayOfWeek, le_sellDateIsweekend, le_sellDateIsHoliday, le_sellDateSeason, le_prescriptionGivenDayOfWeek, le_prescriptionGivenDateIsweekend, le_prescriptionGivenDateIsHoliday, le_prescriptionGivenDateSeason, le_prescriptionExpirationDayOfWeek, le_prescriptionExpirationDateIsweekend, le_prescriptionExpirationDateIsHoliday, le_prescriptionExpirationDateSeason, mse, r2 = ml_drug_need()
+        profit_model, profit_scaler, le_sexe, le_status, le_drugName, le_sellDayOfWeek, le_sellDateIsweekend, le_sellDateIsHoliday, le_sellDateSeason, le_prescriptionGivenDayOfWeek, le_prescriptionGivenDateIsweekend, le_prescriptionGivenDateIsHoliday, le_prescriptionGivenDateSeason, le_prescriptionExpirationDayOfWeek, le_prescriptionExpirationDateIsweekend, le_prescriptionExpirationDateIsHoliday, le_prescriptionExpirationDateSeason, mse, r2 = ml_profit()
         ml_profit_time = time.time() - start_time
         st.subheader("Prédiction des profit generés pour une journée")
 
@@ -173,8 +173,8 @@ elif selected_option == "Prediction pour une journee":
                 'PrescriptionExpirationDateIsHoliday': drug_data['PrescriptionExpirationDateIsHoliday'],
                 'PrescriptionExpirationSeason': drug_data['PrescriptionExpirationSeason'],
             }
-            print(f"features _profit : {features_profit}")
-            profit_prediction = predict_drug_need(profit_model,
+            # print(f"features _profit : {features_profit}")
+            profit_prediction = predict_profit(profit_model,
                                                 profit_scaler,
                                                 le_sexe,
                                                 le_status,
@@ -204,8 +204,8 @@ elif selected_option == "Prediction pour une journee":
 
         end_time = time.time()
         total_duration = end_time - start_time
-        st.write(f'Temps de traitement pour la prédiction des profits : {ml_profit_time:.2f} secondes')
-        st.write(f'duree total : {total_duration:.2f} secondes')
+        #st.write(f'Temps de traitement pour la prédiction des profits : {ml_profit_time:.2f} secondes')
+        #st.write(f'duree total : {total_duration:.2f} secondes')
         st.write(f'Erreur Quadratique Moyenne pour la prédiction des profits : {mse}')
         st.write(f'Coefficient de Détermination pour la prédiction des profits : {r2}')
         st.write(f'Total des profits prédits : {total_predicted_profit:.2f} $')
@@ -214,7 +214,7 @@ elif selected_option == "Prediction pour une journee":
     elif prediction_option == "Prédiction de stock nécessaire":
 
         start_time = time.time()
-        profit_model, profit_scaler, le_sexe, le_status, le_drugName, le_sellDayOfWeek, le_sellDateIsweekend, le_sellDateIsHoliday, le_sellDateSeason, le_prescriptionGivenDayOfWeek, le_prescriptionGivenDateIsweekend, le_prescriptionGivenDateIsHoliday, le_prescriptionGivenDateSeason, le_prescriptionExpirationDayOfWeek, le_prescriptionExpirationDateIsweekend, le_prescriptionExpirationDateIsHoliday, le_prescriptionExpirationDateSeason, mse, r2 = ml_profit()
+        profit_model, profit_scaler, le_sexe, le_status, le_drugName, le_sellDayOfWeek, le_sellDateIsweekend, le_sellDateIsHoliday, le_sellDateSeason, le_prescriptionGivenDayOfWeek, le_prescriptionGivenDateIsweekend, le_prescriptionGivenDateIsHoliday, le_prescriptionGivenDateSeason, le_prescriptionExpirationDayOfWeek, le_prescriptionExpirationDateIsweekend, le_prescriptionExpirationDateIsHoliday, le_prescriptionExpirationDateSeason, mse, r2 = ml_drug_need()
         ml_profit_time = time.time() - start_time
         st.subheader("Prédiction des besoin en médicaments pour une journée")
 
@@ -297,8 +297,8 @@ elif selected_option == "Prediction pour une journee":
 
                 'Profit': dfSQL[dfSQL['DrugName'] == drug_profit]['Profit'].iloc[0],
             }
-            print(f"features_profit : {features_profit}")
-            profit_prediction = predict_profit(profit_model,
+            # print(f"features_profit : {features_profit}")
+            profit_prediction = predict_drug_need(profit_model,
                                                 profit_scaler,
                                                 le_sexe,
                                                 le_status,
@@ -324,17 +324,14 @@ elif selected_option == "Prediction pour une journee":
             result_profit_dfSQL = result_profit_dfSQL.append({
                 'Drug Name': drug_profit,
                 'Quantite nessessaire': str(int(round(profit_prediction))) + ' Units',
-                 'Quantite en stock': Drug.get_drug_by_name(drug_profit).stock + ' Units'
+                 'Quantite en stock': str(Drug.get_drug_by_name(drug_profit).stock) + ' Units'
             }, ignore_index=True)
 
         end_time = time.time()
         total_duration = end_time - start_time
 
-        
-
-        st.write(f'Temps de traitement pour la prédiction des stocks: {ml_profit_time:.2f} secondes')
-        st.write(f'duree total : {total_duration:.2f} secondes')
-        st.write(f'Erreur Quadratique Moyenne pour la prédiction des stocks : {mse}')
-        st.write(f'Coefficient de Détermination pour la prédiction des stocks : {r2}')
+    
+        st.write(f'Erreur Quadratique Moyenne pour la prédiction des stocks : {round(mse * 100, 4)} %')
+        st.write(f'Coefficient de Détermination pour la prédiction des stocks : {round(r2 * 100, 4)} %')
         st.write(f'Total des stocks prédits : {round(total_predicted_profit)} Units')
         st.table(result_profit_dfSQL)

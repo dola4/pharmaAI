@@ -16792,3 +16792,16 @@ id_vente,id_client,sexe,age,SellDate,PrescriptionGivenDate,PrescriptionExpiratio
 4067,837,M,43,2023-11-21,2023-11-11,2024-01-06,5,5,expired,Omeprazole,122.19,52.67,Tuesday,21,11,2023,False,False,Fall,Saturday,11,11,2023,True,False,Fall,Saturday,6,1,2024,True,False,Winter,69.52
 1085,353,M,21,2023-06-21,2023-06-03,2023-07-27,2,6,expired,Amlodipine,31.3,16.3,Wednesday,21,6,2023,False,False,Summer,Saturday,3,6,2023,True,False,Summer,Thursday,27,7,2023,False,False,Summer,15.0
 3479,541,M,28,2023-08-22,2023-08-04,2023-10-17,5,5,expired,Lisinopril,86.94,45.76,Tuesday,22,8,2023,False,False,Summer,Friday,4,8,2023,False,False,Summer,Tuesday,17,10,2023,False,False,Fall,41.18
+6575,336,M,38,2024-03-01,2024-02-28,2024-05-19,5,8,active,Metformine,198.83,114.27,Friday,1,3,2024,False,False,Spring,Wednesday,28,2,2024,False,False,Winter,Sunday,19,5,2024,True,False,Spring,84.56
+6575,880,M,91,2024-03-05,2024-03-03,2024-04-09,3,6,active,Citalopram,251.97,108.14,Tuesday,5,3,2024,False,False,Spring,Sunday,3,3,2024,True,False,Spring,Tuesday,9,4,2024,False,False,Spring,143.83
+6575,880,M,91,2024-03-05,2024-03-05,2024-05-06,4,6,active,Citalopram,251.97,108.14,Tuesday,5,3,2024,False,False,Spring,Tuesday,5,3,2024,False,False,Spring,Monday,6,5,2024,False,False,Spring,143.83
+2252,462,F,82,2023-12-09,2023-11-14,2024-02-13,1,5,expired,Fluticasone,174.38,84.24,Saturday,9,12,2023,True,False,Winter,Tuesday,14,11,2023,False,False,Fall,Tuesday,13,2,2024,False,False,Winter,90.14
+5320,552,M,82,2023-11-14,2023-10-18,2023-12-15,1,7,expired,Losartan,204.16,101.57,Tuesday,14,11,2023,False,False,Fall,Wednesday,18,10,2023,False,False,Fall,Friday,15,12,2023,False,False,Winter,102.59
+3652,266,M,76,2023-02-27,2023-02-20,2023-04-20,2,7,active,Alprazolam,204.97,110.2,Monday,27,2,2023,False,False,Winter,Monday,20,2,2023,False,False,Winter,Thursday,20,4,2023,False,False,Spring,94.77
+4218,490,F,91,2023-08-22,2023-08-07,2023-10-08,4,7,active,Tramadol,46.47,20.56,Tuesday,22,8,2023,False,False,Summer,Monday,7,8,2023,False,False,Summer,Sunday,8,10,2023,True,False,Fall,25.91
+5021,806,M,23,2023-04-25,2023-04-11,2023-06-17,4,8,active,Amlodipine,31.3,16.3,Tuesday,25,4,2023,False,False,Spring,Tuesday,11,4,2023,False,False,Spring,Saturday,17,6,2023,True,False,Summer,15.0
+2685,229,M,92,2023-07-15,2023-06-30,2023-09-10,2,10,expired,Metformine,198.83,114.27,Saturday,15,7,2023,True,False,Summer,Friday,30,6,2023,False,False,Summer,Sunday,10,9,2023,True,False,Fall,84.56
+3912,502,F,99,2023-07-25,2023-07-19,2023-09-16,1,9,expired,Alprazolam,204.97,110.2,Tuesday,25,7,2023,False,False,Summer,Wednesday,19,7,2023,False,False,Summer,Saturday,16,9,2023,True,False,Fall,94.77
+4067,837,M,43,2023-11-21,2023-11-11,2024-01-06,5,5,expired,Omeprazole,122.19,52.67,Tuesday,21,11,2023,False,False,Fall,Saturday,11,11,2023,True,False,Fall,Saturday,6,1,2024,True,False,Winter,69.52
+1085,353,M,21,2023-06-21,2023-06-03,2023-07-27,2,6,expired,Amlodipine,31.3,16.3,Wednesday,21,6,2023,False,False,Summer,Saturday,3,6,2023,True,False,Summer,Thursday,27,7,2023,False,False,Summer,15.0
+3479,541,M,28,2023-08-22,2023-08-04,2023-10-17,5,5,expired,Lisinopril,86.94,45.76,Tuesday,22,8,2023,False,False,Summer,Friday,4,8,2023,False,False,Summer,Tuesday,17,10,2023,False,False,Fall,41.18

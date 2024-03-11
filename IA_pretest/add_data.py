@@ -104,7 +104,7 @@ def add_data():
         # Supposons que sell_date est déjà définie via st.date_input
         sell_date = st.date_input("Date de vente", datetime.now())
         # Générer une date aléatoire pour prescription_given_date entre sell_date et 5 jours ou moins
-        prescription_given_date = sell_date + timedelta(days=random.randint(0, 5))
+        prescription_given_date = sell_date - timedelta(days=random.randint(0, 5))
         # Générer une date aléatoire pour PrescriptionExpirationDate entre prescription_given_date + 30 jours et prescription_given_date + 90 jours
         PrescriptionExpirationDate = prescription_given_date + timedelta(days=random.randint(30, 90))
         # Générer un entier aléatoire pour PrescriptionGivenNb entre 1 et 5

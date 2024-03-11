@@ -98,9 +98,9 @@ def eda(df, feature_names, target):
             ax.set_title(col)        
             st.pyplot(fig)
 
-        if st.checkbox("Show Scatter plot"):
-            fig = px.scatter(df, x=feature_names[0], y=feature_names[1], color=target)
-            st.plotly_chart(fig)
+    if st.checkbox("Show Scatter plot"):
+        fig = px.scatter(df, x=feature_names[0], y=feature_names[1], color=target)
+        st.plotly_chart(fig)
 
     
 
